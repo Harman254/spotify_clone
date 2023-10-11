@@ -2,6 +2,7 @@ import { Song } from '@/types'
 import React from 'react'
 import useLoadImage from '../hooks/useLoadImage';
 import Image from 'next/image';
+import PlayButton from './PlayButton';
 
 type SongItemProps = {
     data: Song;
@@ -71,7 +72,7 @@ const SongItem: React.FC<SongItemProps>  = ( { data, onClick}) => {
         right-5
       "
     >
-      {/* <PlayButton /> */}
+      <PlayButton />
     </div>
   </div>
  );

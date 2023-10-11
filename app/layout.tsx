@@ -6,6 +6,7 @@ import { Figtree } from 'next/font/google'
 import SupabaseProvider from "@/Providers/SupabaseProvider"
 import ModalProvider from '@/Providers/ModalProvider'
 import ToasterProvider from '@/Providers/ToasterProvider'
+import getSongsByUserId from '@/actions/getSongsByUserid'
 
 const font = Figtree({ subsets: ['latin'] })
 
@@ -13,12 +14,15 @@ export const metadata: Metadata = {
   title: 'Spotify Clone',
   description: 'Music is Life',
 }
+export const revalidate = 0
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+const userSongs = await getSongsByUserId()
+
   return (
     <html lang="en">
       <body className={`font.className`}>
@@ -27,7 +31,8 @@ export default function RootLayout({
           <UserProvider>
 
             <ModalProvider />
-            <Sidebar >
+            <Sidebar songs={userSongs}
+            >
               {children}
             </Sidebar>
           </UserProvider>
