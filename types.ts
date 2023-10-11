@@ -35,6 +35,16 @@ export type Price = {
     products: Product;
 }
 
+export type Song = {
+    id: string;
+    user_id: string;
+    title: string;
+    author: string;
+    song_path: string;
+    image_path: string;
+    
+}
+
 export type Subscription = {
     id: string;
     user_id?: string;

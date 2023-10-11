@@ -69,15 +69,15 @@ export const MyUserContextProvider = (props: Props) => {
         accessToken, user, userDetails, isLoading: isLoadingUser || isLoadingData, subscription
     }
 
-    return <UserContext.Provider value={value} {...props}/>
+    return <UserContext.Provider value={value} {...props} />
 
-    
+
 }
 
 export const useUser = () => {
     const context = useContext(UserContext)
 
-    if(context === undefined){
+    if (context === undefined) {
         throw new Error("useUser must be used within a MyUserContextProvider")
     }
 
