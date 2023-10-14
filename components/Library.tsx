@@ -12,7 +12,7 @@ type LibraryProps = {
   songs: Song[]
 }
 
-const Library: React.FC<LibraryProps> = ({ songs}) => {
+const Library: React.FC<LibraryProps> = ({ songs }) => {
 
   const AuthModal = useAuthModal();
   const UploadModal = useUploadModal();
