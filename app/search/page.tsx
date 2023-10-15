@@ -10,6 +10,8 @@ type SearchPageProps = {
     }
 }
 
+export const revalidate = 0
+
 const Page: React.FC<SearchPageProps> = async ({ searchParams }) => {
     const songs = await getSongsByTitle(searchParams.title)
 
