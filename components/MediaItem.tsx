@@ -1,26 +1,32 @@
-'use client'
-import useLoadImage from '@/hooks/useLoadImage'
-import { Song } from '@/types'
-import Image from 'next/image'
-import React from 'react'
+"use client";
 
-type MediaItemProps = {
-    song: Song
-    onClick?: (id: string) => void
+import Image from "next/image";
+
+import useLoadImage from "@/hooks/useLoadImage";
+import { Song } from "@/types";
+import usePlayer from "@/hooks/usePlayer";
+
+interface MediaItemProps {
+  song: Song;
+  onClick?: (id: string) => void;
 }
 
-const MediaItem: React.FC<MediaItemProps>  = ({ song, onClick}) => {
-const imageUrl = useLoadImage(song)
+const MediaItem: React.FC<MediaItemProps> = ({
+  song,
+  onClick,
+}) => {
+  const player = usePlayer();
+  const imageUrl = useLoadImage(song);
 
-const handleClick = () => {
+  const handleClick = () => {
     if (onClick) {
-        return onClick(song.id)
+      return onClick(song.id);
     }
+  
+    return player.setId(song.id);
+  };
 
-  //! default turn on player
-}
-
-  return (
+  return ( 
     <div
       onClick={handleClick}
       className="
@@ -57,7 +63,7 @@ const handleClick = () => {
         </p>
       </div>
     </div>
-  )
+  );
 }
-
-export default MediaItem
+ 
+export default MediaItem;
