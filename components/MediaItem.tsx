@@ -7,26 +7,28 @@ import { Song } from "@/types";
 import usePlayer from "@/hooks/usePlayer";
 
 interface MediaItemProps {
-  song: Song;
+  data: Song;
   onClick?: (id: string) => void;
 }
 
 const MediaItem: React.FC<MediaItemProps> = ({
-  song,
+  data,
   onClick,
 }) => {
   const player = usePlayer();
-  const imageUrl = useLoadImage(song);
+  const imageUrl = useLoadImage(data);
+
+  const { title, author } = data;
 
   const handleClick = () => {
     if (onClick) {
-      return onClick(song.id);
+      return onClick(data.id);
     }
-  
-    return player.setId(song.id);
+
+    return player.setId(data.id);
   };
 
-  return ( 
+  return (
     <div
       onClick={handleClick}
       className="
@@ -40,7 +42,7 @@ const MediaItem: React.FC<MediaItemProps> = ({
         rounded-md
       "
     >
-      <div 
+      <div
         className="
           relative 
           rounded-md 
@@ -51,19 +53,19 @@ const MediaItem: React.FC<MediaItemProps> = ({
       >
         <Image
           fill
-          src={imageUrl || "/images/liked.png"}
+          src={imageUrl || "/images/music-placeholder.png"}
           alt="MediaItem"
           className="object-cover"
         />
       </div>
       <div className="flex flex-col gap-y-1 overflow-hidden">
-        <p className="text-white truncate">{song.title}</p>
+        <p className="text-white truncate">{title}</p>
         <p className="text-neutral-400 text-sm truncate">
-          By {song.author}
+          By {author}
         </p>
       </div>
     </div>
   );
 }
- 
+
 export default MediaItem;

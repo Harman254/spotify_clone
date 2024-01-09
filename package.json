@@ -17,6 +17,7 @@
     "@supabase/auth-ui-react": "^0.4.5",
     "@supabase/auth-ui-shared": "^0.1.7",
     "@supabase/supabase-js": "^2.39.2",
+    "@types/play-sound": "^1.1.2",
     "eslint-config-next": "^14.0.4",
     "next": "^14.0.4",
     "query-string": "^8.1.0",

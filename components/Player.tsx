@@ -8,9 +8,7 @@ import PlayerContent from "./PlayerContent";
 
 const Player = () => {
   const player = usePlayer();
-
-
-  const { song } = useGetSongbyId(player.activeId);
+  const { song } = useGetSongbyId(player.activeId || "");
 
   const songUrl = useLoadSongUrl(song!);
 
@@ -19,11 +17,11 @@ const Player = () => {
   }
 
   return (
-    <div 
+    <div
       className="
         fixed 
         bottom-0 
-        bg-black/10 
+        bg-black 
         w-full 
         py-2 
         h-[80px] 
