@@ -94,7 +94,7 @@ const SubscribeModal: React.FC<SubscribeModalProps> = ({
                             className="mb-4"
                         >
 
-                            {`Subscribe for ${formatPrice(price)} a ${price.interval}`}
+                            {`Subscribe for ${formatPrice(price)} a month`}
                         </Button>
                     ))
                 })}
