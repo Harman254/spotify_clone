@@ -10,9 +10,9 @@ const useLoadSongUrl = (song: Song) => {
   }
 
   const { data: songData } = supabaseClient
-  .storage
-  .from('songs')
-  .getPublicUrl(song.song_path);
+    .storage
+    .from('songs')
+    .getPublicUrl(song.song_path);
 
   return songData.publicUrl;
 };
